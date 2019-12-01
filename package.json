@@ -11,5 +11,9 @@
   "bin": {
     "powerpoint-audio-extractor": "index.js"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "dependencies": {
+    "unzip": "^0.1.11",
+    "unzipper": "^0.10.5"
+  }
 }
