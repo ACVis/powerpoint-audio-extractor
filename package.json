@@ -20,6 +20,7 @@
     "ffprobe-static": "^3.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "normalize-volume": "^1.0.5",
+    "uniqid": "^5.2.0",
     "unzip": "^0.1.11",
     "unzipper": "^0.10.5"
   }
