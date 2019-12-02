@@ -9,31 +9,21 @@ const uniqid = require("uniqid");
 
 const ffmpeg_static = require("ffmpeg-static");
 const ffprobe_static = require("ffprobe-static");
-// console.log(ffmpeg.path);
-const NormalizeVolume = require("normalize-volume");
 
+//fluent ffmpeg init type 1
 // const FfmpegCommand = require("fluent-ffmpeg");
-// FfmpegCommand.setFfmpegPath(ffmpeg_static);
-// FfmpegCommand.setFfprobePath(ffprobe_static);
+// FfmpegCommand.setFfmpegPath(ffmpeg_static.path);
+// FfmpegCommand.setFfprobePath(ffprobe_static.path);
 // const ffmpeg_command = new FfmpegCommand();
-var ffmpeg = require("fluent-ffmpeg");
-ffmpeg.setFfmpegPath(ffmpeg_static.path);
-ffmpeg.setFfprobePath(ffprobe_static.path);
-var command = ffmpeg();
 
-// console.log(__dirname);
-//==================//
-//list root directory
-//==================//
-// fs.readdir(__dirname, (err, files) => {
-//     files.forEach( (file) => {
-
-//         // console.log(file);
-//     })
-// })
+//fluent ffmpeg init type 2
+// var ffmpeg = require("fluent-ffmpeg");
+// ffmpeg.setFfmpegPath(ffmpeg_static.path);
+// ffmpeg.setFfprobePath(ffprobe_static.path);
+// var command = ffmpeg();
 
 //==================//
-//Caporal Version
+//Caporal
 //==================//
 const prog = require("caporal");
 prog
