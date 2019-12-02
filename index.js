@@ -58,8 +58,18 @@ program
   // console.log({program});
   console.log({cmdObj})
   console.log(source, destination);
+  src = source;
+  dest = destination;
 })
 .parse(process.argv);
+console.log({program})
+if(typeof src !== 'undefined') {
+  src = path.resolve(src);
+  dest = path.resolve(dest)
+  console.log("HAS SOURCE", src)
+  console.log("HAS DESTINATION", dest)
+  extract(src, dest);
+}
 
 // console.log({program})
 
@@ -85,40 +95,43 @@ program
 //==================//
 //UNZIP
 //==================//
+function extract(source, destination) {
+  
+
 // const pptPath = path.resolve(__dirname, "ch07.3.pptx");
-// const root = path.resolve(__dirname);
+const pptPath = source;
+const root = path.resolve(__dirname);
 // const outputDir = path.resolve(path.join(__dirname, "/output"));
+const outputDir = destination;
 
 
-// fs.createReadStream(pptPath)
-//   .pipe(unzipper.Parse())
-//   .on('entry', async (entry) => {
-//     try {
+fs.createReadStream(pptPath)
+  .pipe(unzipper.Parse())
+  .on('entry', async (entry) => {
+    try {
 
-//       const fileName = entry.path;
-//       const type = entry.type; // 'Directory' or 'File'
-//       const size = entry.vars.uncompressedSize; // There is also compressedSize;
-//       if (path.extname(fileName) === ".wav") {
-//         // console.log(type, size, fileName)
-//         const fullFilePath = path.join(outputDir, path.parse(fileName).base); 
-//         console.log(fullFilePath)
+      const fileName = entry.path;
+      const type = entry.type; // 'Directory' or 'File'
+      const size = entry.vars.uncompressedSize; // There is also compressedSize;
+      if (path.extname(fileName) === ".wav") {
+        // console.log(type, size, fileName)
+        const fullFilePath = path.join(outputDir, path.parse(fileName).base); 
+        console.log(fullFilePath)
         
-//         console.log(outputDir)
-//         if (!fs.existsSync(outputDir)) {
-//           fs.mkdirSync(outputDir)
-//         }
-//         // entry.pipe(fs.createWriteStream(outputDir));
-//         const content = await entry.buffer();
-//         // await fs.writeFile(outputDir, content);
-//         fs.writeFileSync(fullFilePath, content);
-//       } else {
-//         entry.autodrain();
-//       }
-//     }
-//     catch(err) {
-//       console.log(err)
-//     }
-//   });
-
-
-console.log(new Date().toLocaleString());
+        console.log(outputDir)
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir)
+        }
+        // entry.pipe(fs.createWriteStream(outputDir));
+        const content = await entry.buffer();
+        // await fs.writeFile(outputDir, content);
+        fs.writeFileSync(fullFilePath, content);
+      } else {
+        entry.autodrain();
+      }
+    }
+    catch(err) {
+      console.log(err)
+    }
+  });
+}
