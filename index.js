@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
-const stream = require("stream");
+// const stream = require("stream");
 
 const unzipper = require("unzipper");
 const ffmpegNormalize = require("ffmpeg-normalize");
 const uniqid = require("uniqid");
 
-const ffmpeg_static = require("ffmpeg-static");
-const ffprobe_static = require("ffprobe-static");
+// const ffmpeg_static = require("ffmpeg-static");
+// const ffprobe_static = require("ffprobe-static");
 
 //fluent ffmpeg init type 1
 // const FfmpegCommand = require("fluent-ffmpeg");
